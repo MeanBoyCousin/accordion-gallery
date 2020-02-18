@@ -29,8 +29,8 @@ const setContainerStyles = (container, options) => {
     };
 };
 
-const createGalleryContents = (container, images, options) => {
-    images.forEach((image, i) => {
+const createGalleryContents = (container, options) => {
+    options.tempArray.forEach((image, i) => {
         // Create div.
         const div = document.createElement('div');
         // Style div.
@@ -44,7 +44,7 @@ const createGalleryContents = (container, images, options) => {
         } else {
             div.style.alignItems = 'flex-end';
         }
-        div.style.backgroundImage = `url('${image}')`;
+        div.style.backgroundImage = `url('${image.image}')`;
         div.style.backgroundPosition = 'center';
         div.style.backgroundSize = 'auto 100%';
         div.style.backgroundRepeat = 'no-repeat';
@@ -101,26 +101,26 @@ const createGalleryContents = (container, images, options) => {
         tBCont.style.transition = `${options.speed}ms cubic-bezier(.25, .8, .25, 1)`;
         const text = document.createElement('p');
         text.style.wordWrap = 'break-word';
-        text.innerHTML = options.captions[i];
+        text.innerHTML = options.tempArray[i].caption;
         const link = document.createElement('a');
         if (options.linksInNewTab === true) {
             link.target = '_blank';
-            link.href = options.buttonLinks[i];
+            link.href = options.tempArray[i].buttonLink;
         } else {
-            link.href = options.buttonLinks[i];
+            link.href = options.tempArray[i].buttonLink;
         }
         const button = document.createElement('button');
-        button.innerHTML = options.buttons[i];
+        button.innerHTML = options.tempArray[i].buttonText;
         link.appendChild(button);
 
-        if (typeof options.captions[i] === 'string') {
+        if (typeof options.tempArray[i].caption === 'string') {
             tBCont.appendChild(text);
         }
-        if (typeof options.buttons[i] === 'string') {
+        if (typeof options.tempArray[i].buttonText === 'string') {
             tBCont.appendChild(link);
         }
 
-        if (options.captions[i] === undefined && options.buttons[i] === undefined) {
+        if (options.tempArray[i].caption === undefined && options.tempArray[i].buttonText === undefined) {
             tBCont.style.display = 'none';
         }
         div.appendChild(tBCont);
@@ -165,10 +165,12 @@ const mediaQueries = (options) => {
 const verticalGallery = (options) => {
 
     const defaultOptions = {
-        images: [],
-        captions: [],
-        buttons: [],
-        buttonLinks: [],
+        tempArray: [{
+            image: '',
+            caption: '',
+            buttonText: '',
+            buttonLink: ''
+        }],
         linksInNewTab: true,
         captionPosition: 'bottom',
         captionBkgColor: 'rgba(255,255,255,0.75)',
@@ -197,7 +199,7 @@ const verticalGallery = (options) => {
     const container = document.getElementById('vg-container');
 
     setContainerStyles(container, options);
-    createGalleryContents(container, options.images, options);
+    createGalleryContents(container, options);
 
     mediaQueries(options);
 
