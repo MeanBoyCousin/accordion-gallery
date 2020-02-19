@@ -11,7 +11,7 @@ const options = {
         caption: 'This is a caption with a button.',
         buttonText: 'Click me!',
         buttonLink: 'https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/'
-    },
+    }],
     
     //Defaults / Optional.
     linksInNewTab: true,                     
