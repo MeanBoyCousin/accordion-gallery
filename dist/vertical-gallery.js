@@ -4,7 +4,8 @@ const containerMouseEnter = options => {
         Object.assign(image.style, {
             opacity: options.opacity,
             transform: `scale(${options.scale})`,
-            borderRadius: options.radius
+            borderRadius: options.radius,
+            flex: 1
         })
     });
 };
