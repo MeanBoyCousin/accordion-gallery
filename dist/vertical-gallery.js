@@ -165,6 +165,7 @@ const buildGallery = options => {
         captionPosition: 'bottom',
         captionBkgColor: 'rgba(255,255,255,0.75)',
         featuredImage: undefined,
+        featuredWidth: 5,
         media: {
             320: [0, 1, 2, 3],
             425: [0, 1, 2],
@@ -175,7 +176,6 @@ const buildGallery = options => {
         opacity: 0.25,
         shadow: true,
         speed: 300,
-        featuredWidth: 5,
         radius: 0,
         scale: 1
     };
