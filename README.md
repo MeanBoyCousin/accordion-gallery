@@ -9,7 +9,7 @@ const options = {};
 buildGallery(options);
 ```
 ## Config
-The ```options``` paramater must be passed to the ```buildGallery()``` function as an object.
+The ```options``` parameter must be passed to the ```buildGallery()``` function as an object.
 
 All ```options``` (except images) have a default value so you need only specific the options that you wish to explicitly set.
 
@@ -173,7 +173,7 @@ Type: ```number```
 
 Accepts: Any number value between 0 - 1.
 
-Specifies the opacity of the unhovered images.
+Specifies the opacity of the un-hovered images.
 
 Example:
 
@@ -231,7 +231,7 @@ Type: ```number```
 
 Accepts: Any number below 1.
 
-Specifies the scale rate for unhovered images.
+Specifies the scale rate for un-hovered images.
 
 Example:
 
