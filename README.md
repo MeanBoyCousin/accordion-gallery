@@ -2,9 +2,36 @@
 An ES6 JavaScript vertical gallery component.
 
 ```js
-import {buildGallery} from 'vertical-gallery-min.js';
+import { buildGallery } from 'vertical-gallery-min.js';
 
-const options = {};
+const options = {
+    //Required.
+    images: [{
+        image: 'images/1.jpg',
+        caption: 'This is a caption with a button.',
+        buttonText: 'Click me!',
+        buttonLink: 'https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/'
+    },
+    
+    //Defaults / Optional.
+    linksInNewTab: true,                     
+    captionPosition: 'bottom',
+    captionBkgColor: 'rgba(255,255,255,0.75)',
+    featuredImage: undefined,
+    featuredWidth: 5,
+    media: {
+        320: [0, 1, 2, 3],
+        425: [0, 1, 2],
+        768: [5, 6]
+    },
+    galleryWidth: '100%',
+    galleryHeight: '100vh',
+    opacity: 0.25,
+    shadow: true,
+    speed: 300,
+    radius: 0,
+    scale: 1
+};
 
 buildGallery(options);
 ```
@@ -15,7 +42,7 @@ All ```options``` (except images) have a default value so you need only specific
 
 ---
 
-### options.images
+### options.images (Required)
 Type: ```Array```
 
 Set the images as well as any captions or buttons. Each image must be added as an object and can include ```image``` as a URL, ```caption``` as a string, ```buttonText``` as a string and ```buttonLink``` as a URL.
@@ -46,7 +73,7 @@ images: [{
 
 ---
 
-### options.linksInNewTab
+### options.linksInNewTab (Optional)
 Type: ```boolean```
 
 Specifies if clicked buttons should open in a new tab or within the current tab.
@@ -59,7 +86,7 @@ linksInNewTab: true
 
 ---
 
-### options.captionPosition
+### options.captionPosition (Optional)
 Type: ```string```
 
 Accepts: ```'top' || 'middle' || 'bottom'```
@@ -74,7 +101,7 @@ linksInNewTab: 'top'
 
 ---
 
-### options.captionBkgColor
+### options.captionBkgColor (Optional)
 Type: ```string```
 
 Accepts: Any color format as a string.
@@ -89,7 +116,7 @@ captionBkgColor: '#000'    //Sets the container to a black background.
 
 ---
 
-### options.featuredImage
+### options.featuredImage (Optional)
 Type: ```number```
 
 Accepts: A number equal to one of the images in the gallery. Images are ```zero indexed``` so if you want to feature the first image, you must specify ```0``` as the value.
@@ -104,7 +131,7 @@ featuredImage: 3    //Features the 4th image.
 
 ---
 
-### options.featuredWidth
+### options.featuredWidth (Optional)
 Type: ```number```
 
 Accepts: A number above 1.
@@ -119,7 +146,7 @@ featuredWidth: 3
 
 ---
 
-### options.media
+### options.media (Optional)
 Type: ```object```
 
 Accepts: Any key as a number followed by an array as a value.
@@ -138,7 +165,7 @@ Example:
 
 ---
 
-### options.galleryWidth
+### options.galleryWidth (Optional)
 Type: ```string```
 
 Accepts: Any width value as a string.
@@ -153,7 +180,7 @@ galleryWidth: '100%'
 
 ---
 
-### options.galleryHeight
+### options.galleryHeight (Optional)
 Type: ```string```
 
 Accepts: Any height value as a string.
@@ -168,7 +195,7 @@ galleryHeight: '100vh'
 
 ---
 
-### options.opacity
+### options.opacity (Optional)
 Type: ```number```
 
 Accepts: Any number value between 0 - 1.
@@ -183,7 +210,7 @@ opacity: 0.25
 
 ---
 
-### options.shadow
+### options.shadow (Optional)
 Type: ```boolean```
 
 Specifies if hovered images should have a box-shadow.
@@ -196,7 +223,7 @@ shadow: true
 
 ---
 
-### options.speed
+### options.speed (Optional)
 Type: ```number```
 
 Accepts: Any number above 0.
@@ -211,7 +238,7 @@ speed: 300    //Equal to 0.3 seconds.
 
 ---
 
-### options.radius
+### options.radius (Optional)
 Type: ```string```
 
 Accepts: Any radius value as a string.
@@ -226,7 +253,7 @@ radius: '50px'
 
 ---
 
-### options.scale
+### options.scale (Optional)
 Type: ```number```
 
 Accepts: Any number below 1.
