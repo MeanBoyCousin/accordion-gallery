@@ -31,11 +31,19 @@ const setContainerStylesAndEvents = (container, options) => {
     Object.assign(container.style, {
         width: options.galleryWidth,
         height: options.galleryHeight,
-        display: 'flex'
+        display: 'flex',
+        userSelect: 'none',
+        webkitUserSelect: 'none'
     });
     // Hover rules for container.
     container.onmouseenter = () => containerMouseEnter(options);
+    container.addEventListener('touchstart', function () {
+        containerMouseEnter(options);
+    });
     container.onmouseleave = () => containerMouseLeave(options);
+    container.addEventListener('touchmove', function () {
+        containerMouseLeave(options);
+    });
 };
 
 const imageMouseEnter = (div, options, i) => {
@@ -122,7 +130,13 @@ const createGalleryContents = (container, options) => {
         });
         // Hover rules for div.
         div.onmouseenter = () => imageMouseEnter(div, options, i);
+        div.addEventListener('touchstart', function () {
+            imageMouseEnter(div, options, i);
+        });
         div.onmouseleave = () => imageMouseLeave(div, options, i);
+        div.addEventListener('touchmove', function () {
+            imageMouseLeave(div, options, i);
+        });
         // Create text and button.
         const textButtonContainer = createTextButtonContainer(options, i);
         const caption = createTextElement(options, i);
