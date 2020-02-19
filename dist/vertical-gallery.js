@@ -45,7 +45,7 @@ const imageMouseEnter = (div, options, i) => {
         });
         Object.assign(div.style, {
             opacity: 1,
-            transition: 'scale(1)',
+            transform: 'scale(1)',
             flex: options.featuredWidth
         });
         if (textContainers[i] !== undefined) textContainers[i].style.opacity = 1;
@@ -57,6 +57,7 @@ const imageMouseLeave = (div, options, i) => {
     let textContainers = Array.from(document.getElementsByClassName('text-button-container'));
     Object.assign(div.style, {
         boxShadow: 'none',
+        transform: `scale(${options.scale})`,
         flex: 1
     });
     if (textContainers[i] !== undefined) textContainers[i].style.opacity = 0;
