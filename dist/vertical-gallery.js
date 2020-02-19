@@ -1,171 +1,161 @@
-const setContainerStyles = (container, options) => {
-    // Style container.
-    container.style.width = options.galleryWidth;
-    container.style.height = options.galleryHeight;
-    container.style.display = 'flex';
+const containerMouseEnter = options => {
+    let images = Array.from(document.getElementsByClassName('vg-img'));
+    images.forEach(image => {
+        Object.assign(image.style, {
+            opacity: options.opacity,
+            transform: `scale(${options.scale})`,
+            borderRadius: options.radius
+        })
+    });
+};
 
-    // Hover rules for container.
-    container.onmouseenter = () => {
-        let images = Array.from(document.getElementsByClassName('vg-img'));
-        images.forEach(image => {
-            image.style.opacity = options.opacity;
-            image.style.transform = `scale(${options.scale})`;
-            image.style.borderRadius = options.radius;
-            image.style.flex = 1;
-        });
-    };
-    container.onmouseleave = () => {
-        let images = Array.from(document.getElementsByClassName('vg-img'));
-        let textContainer = Array.from(document.getElementsByClassName('text-button-container'));
-        images.forEach(image => {
-            image.style.opacity = 1;
-            image.style.transform = 'scale(1)';
-            image.style.borderRadius = '0px';
-        });
-        if (options.featuredImage !== undefined) {
-            images[options.featuredImage].style.flex = options.featuredWidth;
-            textContainer[options.featuredImage].style.opacity = 1;
-        };
+const containerMouseLeave = options => {
+    let images = Array.from(document.getElementsByClassName('vg-img'));
+    let textContainer = Array.from(document.getElementsByClassName('text-button-container'));
+    images.forEach(image => {
+        Object.assign(image.style, {
+            opacity: 1,
+            transform: 'scale(1)',
+            borderRadius: 0
+        })
+    });
+    if (options.featuredImage !== undefined) {
+        images[options.featuredImage].style.flex = options.featuredWidth;
+        textContainer[options.featuredImage].style.opacity = 1;
     };
 };
 
+const setContainerStylesAndEvents = (container, options) => {
+    // Style container.
+    Object.assign(container.style, {
+        width: options.galleryWidth,
+        height: options.galleryHeight,
+        display: 'flex'
+    });
+    // Hover rules for container.
+    container.onmouseenter = () => containerMouseEnter(options);
+    container.onmouseleave = () => containerMouseLeave(options);
+};
+
+const imageMouseEnter = (div, options, i) => {
+    let textContainers = Array.from(document.getElementsByClassName('text-button-container'));
+    setTimeout(() => {
+        textContainers.forEach(textContainer => {
+            textContainer.style.opacity = 0;
+        });
+        Object.assign(div.style, {
+            opacity: 1,
+            transition: 'scale(1)',
+            flex: options.featuredWidth
+        });
+        if (textContainers[i] !== undefined) textContainers[i].style.opacity = 1;
+    }, 0);
+    if (options.shadow === true) div.style.boxShadow = '0 14px 28px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.44)';
+};
+
+const imageMouseLeave = (div, options, i) => {
+    let textContainers = Array.from(document.getElementsByClassName('text-button-container'));
+    Object.assign(div.style, {
+        boxShadow: 'none',
+        flex: 1
+    });
+    if (textContainers[i] !== undefined) textContainers[i].style.opacity = 0;
+};
+
+const createTextButtonContainer = (options, i) => {
+    const tBCont = document.createElement('div');
+    tBCont.classList.add('text-button-container');
+    Object.assign(tBCont.style, {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        maxWidth: '80%',
+        backgroundColor: options.captionBkgColor,
+        margin: '5%',
+        padding: '5%',
+        borderRadius: options.radius,
+        opacity: (options.featuredImage === i) ?
+            1 : 0,
+        transition: `${options.speed}ms cubic-bezier(.25, .8, .25, 1)`
+    });
+    return tBCont;
+};
+
+const createTextElement = (options, i) => {
+    const text = document.createElement('p');
+    text.style.wordWrap = 'break-word';
+    text.innerHTML = options.images[i].caption;
+    return text;
+};
+
+const createButton = (options, i) => {
+    const link = document.createElement('a');
+    link.href = options.images[i].buttonLink;
+    if (options.linksInNewTab === true) link.target = '_blank';
+    const button = document.createElement('button');
+    button.innerHTML = options.images[i].buttonText;
+    link.appendChild(button);
+    return link;
+};
+
 const createGalleryContents = (container, options) => {
-    options.tempArray.forEach((image, i) => {
-        // Create div.
+    options.images.forEach((image, i) => {
+        // Create and style div.
         const div = document.createElement('div');
-        // Style div.
         div.classList.add('vg-img');
-        div.style.display = 'flex';
-        div.style.justifyContent = 'center';
-        if (options.captionPosition === 'top') {
-            div.style.alignItems = 'flex-start';
-        } else if (options.captionPosition === 'middle') {
-            div.style.alignItems = 'center';
-        } else {
-            div.style.alignItems = 'flex-end';
-        }
-        div.style.backgroundImage = `url('${image.image}')`;
-        div.style.backgroundPosition = 'center';
-        div.style.backgroundSize = 'auto 100%';
-        div.style.backgroundRepeat = 'no-repeat';
-        div.style.overflow = 'hidden';
-        if (options.featuredImage === i) {
-            div.style.flex = options.featuredWidth;
-        } else {
-            div.style.flex = 1;
-        }
-        div.style.transition = `${options.speed}ms cubic-bezier(.25, .8, .25, 1)`;
+        Object.assign(div.style, {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: (options.captionPosition === 'top') ?
+                'flex-start' : (options.captionPosition === 'middle') ?
+                'center' : 'flex-end',
+            backgroundImage: `url('${image.image}')`,
+            backgroundPosition: 'center',
+            backgroundSize: 'auto 100%',
+            backgroundRepeat: 'no-repeat',
+            overflow: 'hidden',
+            flex: (options.featuredImage === i) ?
+                options.featuredWidth : 1,
+            transition: `${options.speed}ms cubic-bezier(.25, .8, .25, 1)`
+        });
         // Hover rules for div.
-        div.onmouseenter = () => {
-            let textContainer = Array.from(document.getElementsByClassName('text-button-container'));
-            setTimeout(() => {
-                textContainer.forEach(container => {
-                    container.style.opacity = 0;
-                });
-                div.style.opacity = 1;
-                div.style.transform = 'scale(1)';
-                if (textContainer[i] !== undefined) {
-                    textContainer[i].style.opacity = 1;
-                }
-                div.style.flex = options.featuredWidth;
-            }, 0);
-            if (options.shadow === true) {
-                div.style.boxShadow = '0 14px 28px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.44)';
-            }
-        };
-        div.onmouseleave = () => {
-            let textContainer = Array.from(document.getElementsByClassName('text-button-container'));
-            div.style.boxShadow = 'none';
-            div.style.flex = 1;
-            div.style.opacity = options.opacity;
-            if (textContainer[i] !== undefined) {
-                textContainer[i].style.opacity = 0;
-            };
-        };
+        div.onmouseenter = () => imageMouseEnter(div, options, i);
+        div.onmouseleave = () => imageMouseLeave(div, options, i);
         // Create text and button.
-        const tBCont = document.createElement('div');
-        tBCont.classList.add('text-button-container');
-        tBCont.style.display = 'flex';
-        tBCont.style.flexDirection = 'column';
-        tBCont.style.alignItems = 'center';
-        tBCont.style.maxWidth = '80%';
-        tBCont.style.backgroundColor = options.captionBkgColor;
-        tBCont.style.margin = '5%';
-        tBCont.style.padding = '5%';
-        tBCont.style.borderRadius = options.radius;
-        if (options.featuredImage === i) {
-            tBCont.style.opacity = 1;
-        } else {
-            tBCont.style.opacity = 0;
-        }
-        tBCont.style.transition = `${options.speed}ms cubic-bezier(.25, .8, .25, 1)`;
-        const text = document.createElement('p');
-        text.style.wordWrap = 'break-word';
-        text.innerHTML = options.tempArray[i].caption;
-        const link = document.createElement('a');
-        if (options.linksInNewTab === true) {
-            link.target = '_blank';
-            link.href = options.tempArray[i].buttonLink;
-        } else {
-            link.href = options.tempArray[i].buttonLink;
-        }
-        const button = document.createElement('button');
-        button.innerHTML = options.tempArray[i].buttonText;
-        link.appendChild(button);
-
-        if (typeof options.tempArray[i].caption === 'string') {
-            tBCont.appendChild(text);
-        }
-        if (typeof options.tempArray[i].buttonText === 'string') {
-            tBCont.appendChild(link);
-        }
-
-        if (options.tempArray[i].caption === undefined && options.tempArray[i].buttonText === undefined) {
-            tBCont.style.display = 'none';
-        }
-        div.appendChild(tBCont);
-
-
-
+        const textButtonContainer = createTextButtonContainer(options, i);
+        const caption = createTextElement(options, i);
+        const button = createButton(options, i);
+        // Append children if content is provided.
+        if (typeof options.images[i].caption === 'string') textButtonContainer.appendChild(caption);
+        if (typeof options.images[i].buttonText === 'string') textButtonContainer.appendChild(button);
+        if (options.images[i].caption === undefined && options.images[i].buttonText === undefined) textButtonContainer.style.display = 'none';
+        // Append text container to div.
+        div.appendChild(textButtonContainer);
+        // Append div to gallery container.
         container.appendChild(div);
     });
 };
 
 const undefinedUserOptions = (defaultOptions, userOptions) => {
     Object.keys(defaultOptions).forEach(option => {
-        if (userOptions[option] === undefined) {
-            userOptions[option] = defaultOptions[option];
-        }
+        if (userOptions[option] === undefined) userOptions[option] = defaultOptions[option];
     });
 };
 
-const mediaQueries = (options) => {
-    let trueQueries = [];
-    Object.keys(options.media).forEach(query => {
-        if (window.matchMedia(`(max-width: ${query}px)`).matches) {
-            trueQueries.push(query);
-        }
-    });
-    let smallestQuery = Math.min(...trueQueries);
-    let toRemove = options.media[smallestQuery];
+const applyMediaQueries = options => {
+    let toRemove = options.media[Math.min(...Object.keys(options.media).filter(query => window.matchMedia(`(max-width: ${query}px)`).matches))];
     let images = Array.from(document.getElementsByClassName('vg-img'));
     images.forEach((image, i) => {
-        if (toRemove === undefined) {
-            image.style.display = 'flex';
-        } else {
-            if (toRemove.includes(i)) {
-                image.style.display = 'none';
-            } else {
-                image.style.display = 'flex';
-            }
-        }
+        image.style.display = toRemove === undefined ?
+            'flex' : toRemove.includes(i) ?
+            'none' : 'flex';
     });
 };
 
-const verticalGallery = (options) => {
-
+const buildGallery = options => {
+    const container = document.getElementById('vg-container');
     const defaultOptions = {
-        tempArray: [{
+        images: [{
             image: '',
             caption: '',
             buttonText: '',
@@ -189,25 +179,16 @@ const verticalGallery = (options) => {
         radius: 0,
         scale: 1
     };
-
-    if (options === undefined) {
-        options = defaultOptions;
-    };
-
+    options = options || defaultOptions;
     undefinedUserOptions(defaultOptions, options);
-
-    const container = document.getElementById('vg-container');
-
-    setContainerStyles(container, options);
+    setContainerStylesAndEvents(container, options);
     createGalleryContents(container, options);
-
-    mediaQueries(options);
-
+    applyMediaQueries(options);
     window.onresize = () => {
-        mediaQueries(options);
+        applyMediaQueries(options);
     };
 };
 
 export {
-    verticalGallery as vg
+    buildGallery
 };

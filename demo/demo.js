@@ -1,9 +1,9 @@
 import {
-    vg
+    buildGallery
 } from '../dist/vertical-gallery.js';
 
 const options = {
-    tempArray: [{
+    images: [{
             image: 'images/1.jpg',
             caption: 'This is a caption with a button.',
             buttonText: 'Click me!',
@@ -35,4 +35,4 @@ const options = {
     featuredWidth: 3
 };
 
-vg(options);
+buildGallery(options);
