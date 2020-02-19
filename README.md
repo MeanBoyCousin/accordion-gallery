@@ -269,7 +269,7 @@ scale: 0.75
 ---
 
 ## Demo
-Insert portfolio link here once pushed.
+Check out the [gallery from the demo folder.](https://tim-dunphy-portfolio.herokuapp.com/vertical-gallery/index.html)
 
 ## Authors
 Tim Dunphy
