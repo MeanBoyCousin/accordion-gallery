@@ -49,9 +49,7 @@ const setContainerStylesAndEvents = (container, options) => {
 const imageMouseEnter = (div, options, i) => {
     let textContainers = Array.from(document.getElementsByClassName('text-button-container'));
     setTimeout(() => {
-        textContainers.forEach(textContainer => {
-            textContainer.style.opacity = 0;
-        });
+        textContainers[i].style.opacity = 1;
         Object.assign(div.style, {
             opacity: 1,
             transform: 'scale(1)',
@@ -63,12 +61,13 @@ const imageMouseEnter = (div, options, i) => {
 
 const imageMouseLeave = (div, options, i) => {
     let textContainers = Array.from(document.getElementsByClassName('text-button-container'));
+    textContainers[i].style.opacity = 0;
     Object.assign(div.style, {
         boxShadow: 'none',
         transform: `scale(${options.scale})`,
-        flex: 1
+        flex: 1,
+        opacity: options.opacity
     });
-    if (textContainers[i] !== undefined) textContainers[i].style.opacity = 0;
 };
 
 const createTextButtonContainer = (options, i) => {
