@@ -1,6 +1,21 @@
 {
 	"name": "vertical-gallery",
 	"version": "1.0.0",
+	"babel": {
+		"presets": [
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			]
+		]
+	},
+	"jest": {
+		"collectCoverage": true
+	},
 	"description": "A vertical image gallery javascript component.",
 	"main": "index.html",
 	"scripts": {
