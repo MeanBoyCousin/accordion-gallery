@@ -293,3 +293,7 @@ Thank you to the following for providing outstanding photography for the demo ga
 * [**Isabella Mariana**](https://www.pexels.com/photo/woman-s-face-1988681/)
 
 * [**Renato Abati**](https://www.pexels.com/photo/woman-with-orange-petaled-flower-on-her-lips-1937394/)
+
+---
+
+Thank you to [**@ZephSibley**](https://github.com/ZephSibley) for the help with testing.
