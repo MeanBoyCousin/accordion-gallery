@@ -63,10 +63,10 @@ const imageMouseLeave = (div, options, i) => {
     let textContainers = Array.from(document.getElementsByClassName('text-button-container'));
     textContainers[i].style.opacity = 0;
     Object.assign(div.style, {
-        boxShadow: 'none',
+        opacity: options.opacity,
         transform: `scale(${options.scale})`,
         flex: 1,
-        opacity: options.opacity
+        boxShadow: 'none'
     });
 };
 
@@ -207,5 +207,12 @@ export {
     containerMouseEnter,
     containerMouseLeave,
     setContainerStylesAndEvents,
-    imageMouseEnter
+    imageMouseEnter,
+    imageMouseLeave,
+    createTextButtonContainer,
+    createTextElement,
+    createButton,
+    createGalleryContents,
+    undefinedUserOptions,
+    applyMediaQueries
 };
