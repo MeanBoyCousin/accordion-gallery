@@ -1,10 +1,11 @@
 var gulp = require('gulp'),
     eslint = require('gulp-eslint'),
+    replace = require('gulp-replace'),
     uglify = require('gulp-uglify-es').default,
     rename = require('gulp-rename');
 
 gulp.task('lint', () => {
-    return gulp.src('dist/vertical-gallery.js')
+    return gulp.src('src/vertical-gallery.js')
         .pipe(eslint({
             fix: true
         }))
@@ -12,7 +13,10 @@ gulp.task('lint', () => {
 });
 
 gulp.task('uglify', () => {
-    return gulp.src('dist/vertical-gallery.js')
+    return gulp.src('src/vertical-gallery.js')
+        .pipe(gulp.dest('test'))
+        .pipe(replace(/^export[\s\S]*/m, "export {buildGallery};"))
+        .pipe(gulp.dest('dist'))
         .pipe(uglify())
         .pipe(rename('vertical-gallery-min.js'))
         .pipe(gulp.dest('dist'));

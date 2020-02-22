@@ -203,6 +203,4 @@ const buildGallery = options => {
     };
 };
 
-export {
-    buildGallery
-};
+export {buildGallery};
