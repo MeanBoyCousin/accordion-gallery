@@ -37,13 +37,9 @@ const setContainerStylesAndEvents = (container, options) => {
     });
     // Hover rules for container.
     container.onmouseenter = () => containerMouseEnter(options);
-    container.addEventListener('touchstart', function () {
-        containerMouseEnter(options);
-    });
+    container.ontouchstart = () => containerMouseEnter(options);
     container.onmouseleave = () => containerMouseLeave(options);
-    container.addEventListener('touchmove', function () {
-        containerMouseLeave(options);
-    });
+    container.ontouchmove = () => containerMouseLeave(options);
 };
 
 const imageMouseEnter = (div, options, i) => {
@@ -128,13 +124,9 @@ const createGalleryContents = (container, options) => {
         });
         // Hover rules for div.
         div.onmouseenter = () => imageMouseEnter(div, options, i);
-        div.addEventListener('touchstart', function () {
-            imageMouseEnter(div, options, i);
-        });
+        div.ontouchstart = () => imageMouseEnter(div, options, i);
         div.onmouseleave = () => imageMouseLeave(div, options, i);
-        div.addEventListener('touchmove', function () {
-            imageMouseLeave(div, options, i);
-        });
+        div.ontouchmove = () => imageMouseLeave(div, options, i);
         // Create text and button.
         const textButtonContainer = createTextButtonContainer(options, i);
         const caption = createTextElement(options, i);
