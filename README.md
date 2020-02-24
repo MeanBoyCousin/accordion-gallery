@@ -1,4 +1,4 @@
-# vertical-gallery
+# vertical-gallery [![Build Status](https://travis-ci.org/MeanBoyCousin/vertical-gallery.svg?branch=master)](https://travis-ci.org/MeanBoyCousin/vertical-gallery) [![codecov](https://codecov.io/gh/MeanBoyCousin/vertical-gallery/branch/master/graph/badge.svg)](https://codecov.io/gh/MeanBoyCousin/vertical-gallery)
 An ES6 JavaScript vertical gallery component.
 
 ```js
