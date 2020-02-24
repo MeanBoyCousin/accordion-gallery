@@ -1,5 +1,5 @@
 import {
-    createTextElement
+    createText
 } from './vertical-gallery.js';
 
 describe('Creates a text element from the caption', () => {
@@ -12,12 +12,12 @@ describe('Creates a text element from the caption', () => {
         }]
     };
     let index = options.images.length - 1;
-    document.body.appendChild(createTextElement(options, index));
+    document.body.appendChild(createText(options, index));
     const textEl = document.querySelectorAll('p');
 
 
     test('should be a function', () => {
-        expect(createTextElement).toBeDefined();
+        expect(createText).toBeDefined();
     });
 
     test('should create a matching HTML element', () => {

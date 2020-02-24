@@ -1,5 +1,9 @@
 const containerMouseEnter = options => {
     let images = Array.from(document.getElementsByClassName('vg-img'));
+    let textContainers = Array.from(document.getElementsByClassName('text-button-container'));
+    textContainers.forEach(container => {
+        container.style.opacity = 0;
+    });
     images.forEach(image => {
         Object.assign(image.style, {
             opacity: options.opacity,
@@ -12,7 +16,7 @@ const containerMouseEnter = options => {
 
 const containerMouseLeave = options => {
     let images = Array.from(document.getElementsByClassName('vg-img'));
-    let textContainer = Array.from(document.getElementsByClassName('text-button-container'));
+    let textContainers = Array.from(document.getElementsByClassName('text-button-container'));
     images.forEach(image => {
         Object.assign(image.style, {
             opacity: 1,
@@ -20,14 +24,13 @@ const containerMouseLeave = options => {
             borderRadius: 0
         })
     });
-    const feature = options.featuredImage;
-    if (feature !== undefined && feature < options.images.length) {
-        images[feature].style.flex = options.featuredWidth;
-        textContainer[feature].style.opacity = 1;
+    if (options.featuredImage !== undefined && options.featuredImage < options.images.length) {
+        images[options.featuredImage].style.flex = options.featuredWidth;
+        textContainers[options.featuredImage].style.opacity = 1;
     };
 };
 
-const setContainerStylesAndEvents = (container, options) => {
+const setContainerStylesEvents = (container, options) => {
     // Style container.
     Object.assign(container.style, {
         width: options.galleryWidth,
@@ -37,10 +40,12 @@ const setContainerStylesAndEvents = (container, options) => {
         webkitUserSelect: 'none'
     });
     // Hover rules for container.
-    container.onmouseenter = () => containerMouseEnter(options);
-    container.ontouchstart = () => containerMouseEnter(options);
-    container.onmouseleave = () => containerMouseLeave(options);
-    container.ontouchmove = () => containerMouseLeave(options);
+    'mouseenter touchstart'.split(' ').forEach(event => container.addEventListener(event, function () {
+        containerMouseEnter(options)
+    }));
+    'mouseleave touchmove'.split(' ').forEach(event => container.addEventListener(event, function () {
+        containerMouseLeave(options)
+    }));
 };
 
 const imageMouseEnter = (div, options, i) => {
@@ -67,7 +72,7 @@ const imageMouseLeave = (div, options, i) => {
     });
 };
 
-const createTextButtonContainer = (options, i) => {
+const createCaptionContainer = (options, i) => {
     const tBCont = document.createElement('div');
     tBCont.classList.add('text-button-container');
     Object.assign(tBCont.style, {
@@ -86,7 +91,7 @@ const createTextButtonContainer = (options, i) => {
     return tBCont;
 };
 
-const createTextElement = (options, i) => {
+const createText = (options, i) => {
     const text = document.createElement('p');
     text.style.wordWrap = 'break-word';
     text.innerHTML = options.images[i].caption;
@@ -124,13 +129,15 @@ const createGalleryContents = (container, options) => {
             transition: `${options.speed}ms cubic-bezier(.25, .8, .25, 1)`
         });
         // Hover rules for div.
-        div.onmouseenter = () => imageMouseEnter(div, options, i);
-        div.ontouchstart = () => imageMouseEnter(div, options, i);
-        div.onmouseleave = () => imageMouseLeave(div, options, i);
-        div.ontouchmove = () => imageMouseLeave(div, options, i);
+        'mouseenter touchstart'.split(' ').forEach(event => div.addEventListener(event, function () {
+            imageMouseEnter(div, options, i)
+        }));
+        'mouseleave touchmove'.split(' ').forEach(event => div.addEventListener(event, function () {
+            imageMouseLeave(div, options, i)
+        }));
         // Create text and button.
-        const textButtonContainer = createTextButtonContainer(options, i);
-        const caption = createTextElement(options, i);
+        const textButtonContainer = createCaptionContainer(options, i);
+        const caption = createText(options, i);
         const button = createButton(options, i);
         // Append children if content is provided.
         if (typeof options.images[i].caption === 'string') textButtonContainer.appendChild(caption);
@@ -188,7 +195,7 @@ const buildGallery = options => {
     };
     options = options || defaultOptions;
     undefinedUserOptions(defaultOptions, options);
-    setContainerStylesAndEvents(container, options);
+    setContainerStylesEvents(container, options);
     createGalleryContents(container, options);
     applyMediaQueries(options);
     window.onresize = () => {

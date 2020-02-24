@@ -47,7 +47,7 @@ describe('image div mouse enter actions', () => {
     });
 
     test('should set all text containers opacities to 1', () => {
-            expect(textContainers[0].style.opacity).toEqual('1');
+        expect(textContainers[0].style.opacity).toEqual('1');
     });
 
     test('should apply styles to image div', () => {

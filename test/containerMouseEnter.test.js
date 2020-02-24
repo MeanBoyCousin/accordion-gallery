@@ -1,4 +1,6 @@
-import { containerMouseEnter } from './vertical-gallery.js';
+import {
+    containerMouseEnter
+} from './vertical-gallery.js';
 
 const options = {
     images: [{
@@ -37,33 +39,44 @@ const options = {
 };
 
 describe('container mouse enter style changes', () => {
-    //Configure environment.
-    document.body.innerHTML = '<div class="vg-img"></div><div class="vg-img"></div><div class="vg-img"></div>';
+    document.body.innerHTML = `<div class="vg-img">
+                                    <div class="text-button-container"></div>
+                                </div>
+                                <div class="vg-img">
+                                    <div class="text-button-container"></div>
+                                </div>
+                                <div class="vg-img">
+                                    <div class="text-button-container"></div>
+                                </div>`;
     containerMouseEnter(options);
     const images = Array.from(document.getElementsByClassName('vg-img'));
+    const captionContainers = Array.from(document.getElementsByClassName('text-button-container'));
 
-    //Tests
     test('should be a function', () => {
         expect(containerMouseEnter).toBeDefined();
     });
 
-    test('should apply opacity change to container', () => {
-        const elOpacity = images.map(el => el.style.opacity);
-        expect(elOpacity).toEqual(["0.25", "0.25", "0.25"]);
+    const createStyleArray = (array, styleName) => {
+        return array.map(el => el.style[styleName]);
+    };
+
+    test('should apply opacity change to caption containers', () => {
+        expect(createStyleArray(captionContainers, 'opacity')).toEqual(["0", "0", "0"]);
     });
 
-    test('should apply transform change to container', () => {
-        const elTransform = images.map(el => el.style.transform);
-        expect(elTransform).toEqual(["scale(0.8)", "scale(0.8)", "scale(0.8)"]);
+    test('should apply opacity change to image', () => {
+        expect(createStyleArray(images, 'opacity')).toEqual(["0.25", "0.25", "0.25"]);
     });
 
-    test('should apply border radius change to container', () => {
-        const elRadius = images.map(el => el.style.borderRadius);
-        expect(elRadius).toEqual(["10px", "10px", "10px"]);
+    test('should apply transform change to image', () => {
+        expect(createStyleArray(images, 'transform')).toEqual(["scale(0.8)", "scale(0.8)", "scale(0.8)"]);
     });
 
-    test('should apply flex change to container', () => {
-        const elFlex = images.map(el => el.style.flex);
-        expect(elFlex).toEqual(["1", "1", "1"]);
+    test('should apply border radius change to image', () => {
+        expect(createStyleArray(images, 'borderRadius')).toEqual(["10px", "10px", "10px"]);
+    });
+
+    test('should apply flex change to image', () => {
+        expect(createStyleArray(images, 'flex')).toEqual(["1", "1", "1"]);
     });
 });

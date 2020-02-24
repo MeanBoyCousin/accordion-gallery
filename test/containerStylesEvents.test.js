@@ -1,5 +1,5 @@
 import {
-    setContainerStylesAndEvents
+    setContainerStylesEvents
 } from './vertical-gallery.js';
 
 const options = {
@@ -42,12 +42,12 @@ describe('container styles are applied', () => {
     //Configure environment.
     document.body.innerHTML = '<div id="vg-container"></div>';
     const noStyleContainer = document.getElementById('vg-container');
-    setContainerStylesAndEvents(noStyleContainer, options);
+    setContainerStylesEvents(noStyleContainer, options);
     const styledContainer = document.getElementById('vg-container');
 
     //Tests
     test('should be a function', () => {
-        expect(setContainerStylesAndEvents).toBeDefined();
+        expect(setContainerStylesEvents).toBeDefined();
     });
 
     test('should apply width to container', () => {
@@ -78,7 +78,7 @@ describe('container events', () => {
         document.body.innerHTML = '<div id="vg-container"><div class="vg-img"></div></div>';
         const noStyleContainer = document.getElementById('vg-container');
         const firstImage = document.getElementsByClassName('vg-img')[0];
-        setContainerStylesAndEvents(noStyleContainer, options);
+        setContainerStylesEvents(noStyleContainer, options);
 
         const mouseEnterEvent = new Event('mouseenter');
         const touchStartEvent = new Event('touchstart');
@@ -103,7 +103,7 @@ describe('container events', () => {
         document.body.innerHTML = '<div id="vg-container"><div class="vg-img"></div></div>';
         const noStyleContainer = document.getElementById('vg-container');
         const firstImage = document.getElementsByClassName('vg-img')[0];
-        setContainerStylesAndEvents(noStyleContainer, options);
+        setContainerStylesEvents(noStyleContainer, options);
 
         const mouseLeaveEvent = new Event('mouseleave');
         const touchMoveEvent = new Event('touchmove');

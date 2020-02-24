@@ -1,4 +1,6 @@
-import { containerMouseLeave } from './vertical-gallery.js';
+import {
+    containerMouseLeave
+} from './vertical-gallery.js';
 
 const options = {
     images: [{
@@ -86,17 +88,17 @@ describe('container mouse leave style changes with defined feature image', () =>
         expect(containerMouseLeave).toBeDefined();
     });
 
-    test('should apply opacity change to container', () => {
+    test('should apply opacity change to image', () => {
         const elOpacity = images.map(el => el.style.opacity);
         expect(elOpacity).toEqual(["1", "1", "1"]);
     });
 
-    test('should apply transform change to container', () => {
+    test('should apply transform change to image', () => {
         const elTransform = images.map(el => el.style.transform);
         expect(elTransform).toEqual(["scale(1)", "scale(1)", "scale(1)"]);
     });
 
-    test('should apply border radius change to container', () => {
+    test('should apply border radius change to image', () => {
         const elRadius = images.map(el => el.style.borderRadius);
         expect(elRadius).toEqual(["0", "0", "0"]);
     });

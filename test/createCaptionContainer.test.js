@@ -1,5 +1,5 @@
 import {
-    createTextButtonContainer
+    createCaptionContainer
 } from './vertical-gallery.js';
 
 describe('creation of text and button container with a featured image', () => {
@@ -16,11 +16,11 @@ describe('creation of text and button container with a featured image', () => {
         radius: '10px'
     };
     const index = options.images.length - 1;
-    document.body.appendChild(createTextButtonContainer(options, index));
+    document.body.appendChild(createCaptionContainer(options, index));
     const div = document.getElementsByClassName('text-button-container');
 
     test('should be a function', () => {
-        expect(createTextButtonContainer).toBeDefined();
+        expect(createCaptionContainer).toBeDefined();
     });
 
     test('should return a matching html element', () => {
@@ -66,7 +66,7 @@ describe('creation of text and button container without featured image', () => {
 
         const index = noFeatureOptions.images.length - 1;
 
-        document.body.appendChild(createTextButtonContainer(noFeatureOptions, index));
+        document.body.appendChild(createCaptionContainer(noFeatureOptions, index));
 
         const div = document.getElementsByClassName('text-button-container');
         expect(div[0].style.opacity).toEqual("0");
