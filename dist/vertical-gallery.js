@@ -20,9 +20,10 @@ const containerMouseLeave = options => {
             borderRadius: 0
         })
     });
-    if (options.featuredImage !== undefined) {
-        images[options.featuredImage].style.flex = options.featuredWidth;
-        textContainer[options.featuredImage].style.opacity = 1;
+    const feature = options.featuredImage;
+    if (feature !== undefined && feature < options.images.length) {
+        images[feature].style.flex = options.featuredWidth;
+        textContainer[feature].style.opacity = 1;
     };
 };
 
