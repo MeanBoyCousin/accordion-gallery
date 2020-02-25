@@ -74,6 +74,42 @@ const undefinedFeatureOptions = {
     scale: 1
 };
 
+const nonZeroIndexedFeaturedImageOptions = {
+    images: [{
+            image: 'images/1.jpg',
+            caption: 'This is a caption with a button.',
+            buttonText: 'Click me!',
+            buttonLink: 'https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/'
+        },
+        {
+            image: 'images/2.jpg',
+            buttonText: 'Solo button!',
+            buttonLink: 'https://www.pexels.com/photo/grayscale-photo-of-topless-woman-1164674/'
+        },
+        {
+            image: 'images/3.jpg',
+            caption: 'This is a solo caption.',
+        }
+    ],
+    linksInNewTab: true,
+    captionPosition: 'bottom',
+    captionBkgColor: 'rgba(255,255,255,0.75)',
+    featuredImage: 3,
+    featuredWidth: 5,
+    media: {
+        320: [0, 1, 2, 3],
+        425: [0, 1, 2],
+        768: [5, 6]
+    },
+    galleryWidth: '100%',
+    galleryHeight: '100vh',
+    opacity: 0.25,
+    shadow: true,
+    speed: 300,
+    radius: 0,
+    scale: 1
+};
+
 //Define DOM.
 const dom = '<div class="vg-img" style="flex: 1;"><div class="text-button-container" style="opacity: 0;"></div></div><div class="vg-img" style="flex: 1;"><div class="text-button-container" style="opacity: 0;"></div></div><div class="vg-img" style="flex: 1;"><div class="text-button-container" style="opacity: 0;"></div></div>';
 
@@ -143,7 +179,20 @@ describe('text container opacity should be 0 for undefined featured image on mou
     const textContainers = Array.from(document.getElementsByClassName('text-button-container'));
 
     //Tests
-    test('should make the featured image text container opacity default to 1', () => {
+    test('should make the featured image text container opacity default to 0', () => {
+        const textContainersOpacity = textContainers.map(el => el.style.opacity);
+        expect(textContainersOpacity).toEqual(["0", "0", "0"]);
+    });
+});
+
+describe('text container opacity should be 0 for featured that is a value above the index of the array on mouse leave', () => {
+    //Configure environment.
+    document.body.innerHTML = dom;
+    containerMouseLeave(nonZeroIndexedFeaturedImageOptions);
+    const textContainers = Array.from(document.getElementsByClassName('text-button-container'));
+
+    //Tests
+    test('should make the featured image text container opacity default to 0', () => {
         const textContainersOpacity = textContainers.map(el => el.style.opacity);
         expect(textContainersOpacity).toEqual(["0", "0", "0"]);
     });

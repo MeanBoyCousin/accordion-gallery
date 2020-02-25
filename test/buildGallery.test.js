@@ -48,7 +48,6 @@ describe('Build the gallery with user options', () => {
         featuredWidth: 2.8
     };
     buildGallery(options);
-    const gallery = document.getElementById('vg-container');
     const images = document.getElementsByClassName('vg-img');
 
     test('should be a function', () => {
@@ -127,8 +126,15 @@ describe('Build the gallery with no user options', () => {
         document.body.innerHTML = '<div id="vg-container"></div>';
         buildGallery();
         const images = document.getElementsByClassName('vg-img');
+        const captions = document.querySelectorAll('p');
+        const buttons = document.querySelectorAll('button');
+        const links = document.querySelectorAll('a');
 
         expect(images.length).toEqual(1);
+        expect(images[0].style.backgroundImage).toEqual('url()');
+        expect(captions[0].innerHTML).toEqual('');
+        expect(buttons[0].innerHTML).toEqual('');
+        expect(links[0].href).toEqual("http://localhost/");
     });
 });
 

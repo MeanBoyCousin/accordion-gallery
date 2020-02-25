@@ -331,8 +331,12 @@ describe('Text and button elements', () => {
         expect(buttons.length).toEqual(2);
         expect(containers.length).toEqual(4);
         expect(containers[0].innerHTML).toEqual(`<p style="word-wrap: break-word;">This is a caption with a button.</p><a href="https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/"><button>Click me!</button></a>`);
+        expect(containers[0].style.display).toEqual('flex');
         expect(containers[1].innerHTML).toEqual(`<a href="https://www.pexels.com/photo/grayscale-photo-of-topless-woman-1164674/"><button>Solo button!</button></a>`);
+        expect(containers[1].style.display).toEqual('flex');
         expect(containers[2].innerHTML).toEqual(`<p style="word-wrap: break-word;">This is a solo caption.</p>`);
+        expect(containers[2].style.display).toEqual('flex');
         expect(containers[3].innerHTML).toEqual(``);
+        expect(containers[3].style.display).toEqual('none');
     });
 });

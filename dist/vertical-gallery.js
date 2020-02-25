@@ -24,7 +24,7 @@ const containerMouseLeave = options => {
             borderRadius: 0
         })
     });
-    if (options.featuredImage !== undefined && options.featuredImage < options.images.length) {
+    if (options.featuredImage < options.images.length) {
         images[options.featuredImage].style.flex = options.featuredWidth;
         textContainers[options.featuredImage].style.opacity = 1;
     };

@@ -1,6 +1,6 @@
 {
 	"name": "vertical-gallery",
-	"version": "0.1.9",
+	"version": "0.1.10",
 	"babel": {
 		"presets": [
 			[
@@ -19,7 +19,7 @@
 	"description": "A vertical image gallery javascript component.",
 	"main": "index.html",
 	"scripts": {
-		"test": "jest"
+		"test": "jest && stryker run"
 	},
 	"keywords": [
 		"images",
@@ -33,13 +33,17 @@
 	"devDependencies": {
 		"@babel/core": "^7.8.4",
 		"@babel/preset-env": "^7.8.4",
+		"@stryker-mutator/core": "^2.5.0",
+		"@stryker-mutator/html-reporter": "^2.5.0",
+		"@stryker-mutator/javascript-mutator": "^2.5.0",
+		"@stryker-mutator/jest-runner": "^2.5.0",
 		"babel-jest": "^25.1.0",
 		"gulp": "^4.0.2",
 		"gulp-eslint": "^6.0.0",
 		"gulp-rename": "^2.0.0",
 		"gulp-replace": "^1.0.0",
 		"gulp-uglify-es": "^2.0.0",
-		"jest": "^25.1.0"
+		"jest": "^24.9.0"
 	},
 	"eslintConfig": {
 		"env": {

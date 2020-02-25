@@ -72,7 +72,7 @@ describe('container styles are applied', () => {
 describe('container events', () => {
 
     //Tests
-    test('should apply styles to container on mouse enter', () => {
+    test('should apply styles to container on mouse enter or touch start', () => {
 
         //Configure environment.
         document.body.innerHTML = '<div id="vg-container"><div class="vg-img"></div></div>';
@@ -97,7 +97,7 @@ describe('container events', () => {
         expect(firstImage.style.flex).toEqual('1');
     });
 
-    test('should apply styles to container on mouse leave', () => {
+    test('should apply styles to container on mouse leave or touch move', () => {
 
         //Configure environment.
         document.body.innerHTML = '<div id="vg-container"><div class="vg-img"></div></div>';
