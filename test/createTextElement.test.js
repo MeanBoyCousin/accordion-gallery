@@ -1,6 +1,6 @@
 import {
     createText
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 describe('Creates a text element from the caption', () => {
     let options = {

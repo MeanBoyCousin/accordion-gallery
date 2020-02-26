@@ -1,6 +1,6 @@
 import {
     setContainerStylesEvents
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 const options = {
     images: [{

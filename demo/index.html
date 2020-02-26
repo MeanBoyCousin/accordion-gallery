@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertical Gallery</title>
+    <title>Accordion Gallery</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
     <script type="module" defer>
         import {
             buildGallery
-        } from '../dist/vertical-gallery-min.js';
+        } from '../dist/accordion-gallery-min.js';
 
         const options = {
             images: [{
@@ -64,10 +64,10 @@
                 }
             ],
             featuredImage: 3,
-            featuredWidth: 2.8
+            featuredWidth: 3
         };
 
-        buildGallery();
+        buildGallery(options);
     </script>
 
 </body>

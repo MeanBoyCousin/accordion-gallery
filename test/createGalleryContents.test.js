@@ -1,6 +1,6 @@
 import {
     createGalleryContents
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 describe('Applies styles to the image div with default options', () => {
     document.body.innerHTML = '<div id="vg-container"></div>';

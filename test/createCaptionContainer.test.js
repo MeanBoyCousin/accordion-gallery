@@ -1,6 +1,6 @@
 import {
     createCaptionContainer
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 describe('creation of text and button container with a featured image', () => {
     const options = {

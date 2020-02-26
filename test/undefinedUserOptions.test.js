@@ -1,6 +1,6 @@
 import {
     undefinedUserOptions
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 const defaultOptions = {
     images: [{

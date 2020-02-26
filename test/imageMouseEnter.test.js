@@ -1,6 +1,6 @@
 import {
     imageMouseEnter
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 describe('image div mouse enter actions', () => {
     //Define Environment

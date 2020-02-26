@@ -1,28 +1,25 @@
 {
-	"name": "vertical-gallery",
+	"name": "accordion-gallery",
 	"version": "0.1.10",
-	"babel": {
-		"presets": [
-			[
-				"@babel/preset-env",
-				{
-					"targets": {
-						"node": "current"
-					}
-				}
-			]
-		]
+	"description": "An es6 accordion image gallery javascript component.",
+	"homepage": "https://github.com/MeanBoyCousin/accordion-gallery",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MeanBoyCousin/accordion-gallery.git"
 	},
-	"jest": {
-		"collectCoverage": true
+	"bugs": {
+		"url": "https://github.com/MeanBoyCousin/accordion-gallery/issues"
 	},
-	"description": "A vertical image gallery javascript component.",
-	"main": "index.html",
+	"files": [
+		"./dist/*.js"
+	],
+	"main": "./dist/accordion-gallery-min.js",
 	"scripts": {
 		"test": "jest && stryker run"
 	},
 	"keywords": [
 		"images",
+		"accordion",
 		"gallery",
 		"javascript",
 		"component",
@@ -54,5 +51,20 @@
 		"parserOptions": {
 			"sourceType": "module"
 		}
+	},
+	"babel": {
+		"presets": [
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			]
+		]
+	},
+	"jest": {
+		"collectCoverage": true
 	}
 }

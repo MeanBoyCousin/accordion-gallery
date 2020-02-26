@@ -1,7 +1,7 @@
 import {
     buildGallery,
     applyMediaQueries
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 describe('Build the gallery with user options', () => {
     //Mock matchMedia

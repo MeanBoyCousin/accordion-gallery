@@ -1,6 +1,6 @@
 import {
     imageMouseLeave
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 describe('image div mouse leave actions', () => {
     //Define Environment

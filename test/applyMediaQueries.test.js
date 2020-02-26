@@ -1,6 +1,6 @@
 import {
     applyMediaQueries
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 //Configure environment.
 document.body.innerHTML = `<div class="vg-img" style="display: flex;"></div>

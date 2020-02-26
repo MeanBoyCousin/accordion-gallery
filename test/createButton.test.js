@@ -1,6 +1,6 @@
 import {
     createButton
-} from './vertical-gallery.js';
+} from './accordion-gallery.js';
 
 describe('Creation of link a element and button element that opens in new tab', () => {
     const options = {
