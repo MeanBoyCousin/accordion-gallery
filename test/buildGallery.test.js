@@ -14,7 +14,7 @@ describe('Build the gallery with user options', () => {
     });
 
     document.body.innerHTML = '';
-    document.body.innerHTML = '<div id="vg-container"></div>';
+    document.body.innerHTML = '<div id="acc-container"></div>';
     const options = {
         images: [{
                 image: 'images/1.jpg',
@@ -123,7 +123,7 @@ describe('Build the gallery with no user options', () => {
 
     test('should build an empty gallery with one blank image', () => {
         document.body.innerHTML = '';
-        document.body.innerHTML = '<div id="vg-container"></div>';
+        document.body.innerHTML = '<div id="acc-container"></div>';
         buildGallery();
         const images = document.getElementsByClassName('vg-img');
         const captions = document.querySelectorAll('p');
@@ -150,7 +150,7 @@ describe('media queries on window resize', () => {
         });
 
         document.body.innerHTML = '';
-        document.body.innerHTML = '<div id="vg-container"></div>';
+        document.body.innerHTML = '<div id="acc-container"></div>';
         const mediaOptions = {
             images: [{
                     image: 'images/1.jpg',

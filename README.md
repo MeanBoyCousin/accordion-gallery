@@ -1,39 +1,45 @@
 # accordion-gallery [![Build Status](https://travis-ci.org/MeanBoyCousin/accordion-gallery.svg?branch=master)](https://travis-ci.org/MeanBoyCousin/accordion-gallery) [![codecov](https://codecov.io/gh/MeanBoyCousin/accordion-gallery/branch/master/graph/badge.svg)](https://codecov.io/gh/MeanBoyCousin/accordion-gallery) [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FMeanBoyCousin%2Faccordion-gallery%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/MeanBoyCousin/accordion-gallery/master)
 An ES6 JavaScript accordion gallery component.
 
-```js
-import { buildGallery } from 'accordion-gallery-min.js';
+```html
+<div id="acc-container"></div>
 
-const options = {
-    //Required.
-    images: [{
-        image: 'images/1.jpg',
-        caption: 'This is a caption with a button.',
-        buttonText: 'Click me!',
-        buttonLink: 'https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/'
-    }],
+<script>
     
-    //Defaults / Optional.
-    linksInNewTab: true,                     
-    captionPosition: 'bottom',
-    captionBkgColor: 'rgba(255,255,255,0.75)',
-    featuredImage: undefined,
-    featuredWidth: 5,
-    media: {
-        320: [0, 1, 2, 3],
-        425: [0, 1, 2],
-        768: [5, 6]
-    },
-    galleryWidth: '100%',
-    galleryHeight: '100vh',
-    opacity: 0.25,
-    shadow: true,
-    speed: 300,
-    radius: 0,
-    scale: 1
-};
+    import { buildGallery } from 'accordion-gallery-min.js';
 
-buildGallery(options);
+    const options = {
+        //Required.
+        images: [{
+            image: 'images/1.jpg',
+            caption: 'This is a caption with a button.',
+            buttonText: 'Click me!',
+            buttonLink: 'https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/'
+        }],
+
+        //Defaults / Optional.
+        linksInNewTab: true,                     
+        captionPosition: 'bottom',
+        captionBkgColor: 'rgba(255,255,255,0.75)',
+        featuredImage: undefined,
+        featuredWidth: 5,
+        media: {
+            320: [0, 1, 2, 3],
+            425: [0, 1, 2],
+            768: [5, 6]
+        },
+        galleryWidth: '100%',
+        galleryHeight: '100vh',
+        opacity: 0.25,
+        shadow: true,
+        speed: 300,
+        radius: 0,
+        scale: 1
+    };
+
+    buildGallery(options);
+    
+</script>
 ```
 ## Config
 The ```options``` parameter must be passed to the ```buildGallery()``` function as an object.

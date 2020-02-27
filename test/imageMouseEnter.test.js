@@ -30,7 +30,7 @@ describe('image div mouse enter actions', () => {
         radius: '10px',
         scale: 0.8
     };
-    document.body.innerHTML = `<div id="vg-container">
+    document.body.innerHTML = `<div id="acc-container">
                                 <div class="vg-img">
                                     <div class="text-button-container"></div>
                                 </div>
@@ -96,7 +96,7 @@ describe('image div with no box shadow', () => {
             radius: '10px',
             scale: 0.8
         };
-        document.body.innerHTML = `<div id="vg-container">
+        document.body.innerHTML = `<div id="acc-container">
                                 <div class="vg-img">
                                     <div class="text-button-container"></div>
                                 </div>

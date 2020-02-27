@@ -15,7 +15,8 @@
 	],
 	"main": "./dist/accordion-gallery-min.js",
 	"scripts": {
-		"test": "jest && stryker run"
+		"test": "jest && stryker run",
+		"jest": "jest"
 	},
 	"keywords": [
 		"images",

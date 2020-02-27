@@ -40,10 +40,10 @@ const options = {
 
 describe('container styles are applied', () => {
     //Configure environment.
-    document.body.innerHTML = '<div id="vg-container"></div>';
-    const noStyleContainer = document.getElementById('vg-container');
+    document.body.innerHTML = '<div id="acc-container"></div>';
+    const noStyleContainer = document.getElementById('acc-container');
     setContainerStylesEvents(noStyleContainer, options);
-    const styledContainer = document.getElementById('vg-container');
+    const styledContainer = document.getElementById('acc-container');
 
     //Tests
     test('should be a function', () => {
@@ -75,8 +75,8 @@ describe('container events', () => {
     test('should apply styles to container on mouse enter or touch start', () => {
 
         //Configure environment.
-        document.body.innerHTML = '<div id="vg-container"><div class="vg-img"></div></div>';
-        const noStyleContainer = document.getElementById('vg-container');
+        document.body.innerHTML = '<div id="acc-container"><div class="vg-img"></div></div>';
+        const noStyleContainer = document.getElementById('acc-container');
         const firstImage = document.getElementsByClassName('vg-img')[0];
         setContainerStylesEvents(noStyleContainer, options);
 
@@ -100,8 +100,8 @@ describe('container events', () => {
     test('should apply styles to container on mouse leave or touch move', () => {
 
         //Configure environment.
-        document.body.innerHTML = '<div id="vg-container"><div class="vg-img"></div></div>';
-        const noStyleContainer = document.getElementById('vg-container');
+        document.body.innerHTML = '<div id="acc-container"><div class="vg-img"></div></div>';
+        const noStyleContainer = document.getElementById('acc-container');
         const firstImage = document.getElementsByClassName('vg-img')[0];
         setContainerStylesEvents(noStyleContainer, options);
 

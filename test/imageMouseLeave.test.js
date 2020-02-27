@@ -29,7 +29,7 @@ describe('image div mouse leave actions', () => {
         radius: '10px',
         scale: 0.8
     };
-    document.body.innerHTML = `<div id="vg-container">
+    document.body.innerHTML = `<div id="acc-container">
                                 <div class="vg-img">
                                     <div class="text-button-container"></div>
                                 </div>

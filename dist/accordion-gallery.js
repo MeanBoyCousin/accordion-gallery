@@ -167,7 +167,7 @@ const applyMediaQueries = options => {
 };
 
 const buildGallery = options => {
-    const container = document.getElementById('vg-container');
+    const container = document.getElementById('acc-container');
     const defaultOptions = {
         images: [{
             image: '',

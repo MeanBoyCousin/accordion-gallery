@@ -3,8 +3,8 @@ import {
 } from './accordion-gallery.js';
 
 describe('Applies styles to the image div with default options', () => {
-    document.body.innerHTML = '<div id="vg-container"></div>';
-    const container = document.getElementById('vg-container');
+    document.body.innerHTML = '<div id="acc-container"></div>';
+    const container = document.getElementById('acc-container');
     const options = {
         images: [{
                 image: 'images/1.jpg',
@@ -51,8 +51,8 @@ describe('Applies styles to the image div with default options', () => {
 
 describe('Applies align-items to center if user inputs captionPosition as middle', () => {
     document.body.innerHTML = '';
-    document.body.innerHTML = '<div id="vg-container"></div>';
-    const container = document.getElementById('vg-container');
+    document.body.innerHTML = '<div id="acc-container"></div>';
+    const container = document.getElementById('acc-container');
     const options = {
         images: [{
                 image: 'images/1.jpg',
@@ -89,8 +89,8 @@ describe('Applies align-items to center if user inputs captionPosition as middle
 
 describe('Applies align-items to flex-start if user inputs captionPosition as top', () => {
     document.body.innerHTML = '';
-    document.body.innerHTML = '<div id="vg-container"></div>';
-    const container = document.getElementById('vg-container');
+    document.body.innerHTML = '<div id="acc-container"></div>';
+    const container = document.getElementById('acc-container');
     const options = {
         images: [{
                 image: 'images/1.jpg',
@@ -127,8 +127,8 @@ describe('Applies align-items to flex-start if user inputs captionPosition as to
 
 describe('Applies correct flex styling if a featured image is specified', () => {
     document.body.innerHTML = '';
-    document.body.innerHTML = '<div id="vg-container"></div>';
-    const container = document.getElementById('vg-container');
+    document.body.innerHTML = '<div id="acc-container"></div>';
+    const container = document.getElementById('acc-container');
     const options = {
         images: [{
                 image: 'images/1.jpg',
@@ -166,8 +166,8 @@ describe('Applies correct flex styling if a featured image is specified', () => 
 describe('gallery events', () => {
     test('should apply correct styles to images and text containers on hover out', () => {
         document.body.innerHTML = '';
-        document.body.innerHTML = `<div id="vg-container"></div>`;
-        const container = document.getElementById('vg-container');
+        document.body.innerHTML = `<div id="acc-container"></div>`;
+        const container = document.getElementById('acc-container');
         const options = {
             images: [{
                     image: 'images/1.jpg',
@@ -227,8 +227,8 @@ describe('gallery events', () => {
 
     test('should apply correct styles to hovered images and text containers', () => {
         document.body.innerHTML = '';
-        document.body.innerHTML = `<div id="vg-container"></div>`;
-        const container = document.getElementById('vg-container');
+        document.body.innerHTML = `<div id="acc-container"></div>`;
+        const container = document.getElementById('acc-container');
         const options = {
             images: [{
                     image: 'images/1.jpg',
@@ -292,8 +292,8 @@ describe('gallery events', () => {
 describe('Text and button elements', () => {
     test('should append text and button elements only if provided', () => {
         document.body.innerHTML = '';
-        document.body.innerHTML = '<div id="vg-container"></div>';
-        const container = document.getElementById('vg-container');
+        document.body.innerHTML = '<div id="acc-container"></div>';
+        const container = document.getElementById('acc-container');
         const options = {
             images: [{
                     image: 'images/1.jpg',
