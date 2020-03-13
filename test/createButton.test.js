@@ -10,7 +10,8 @@ describe('Creation of link a element and button element that opens in new tab', 
             buttonText: 'Click me!',
             buttonLink: 'https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/'
         }],
-        linksInNewTab: true
+        linksInNewTab: true,
+        linkType: 'noopener'
     };
     const index = options.images.length - 1;
     document.body.appendChild(createButton(options, index));
@@ -22,7 +23,7 @@ describe('Creation of link a element and button element that opens in new tab', 
     });
 
     test('should return a matching HTML element', () => {
-        expect(link[0].outerHTML).toEqual("<a href=\"https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/\" target=\"_blank\"><button>Click me!</button></a>");
+        expect(link[0].outerHTML).toEqual("<a href=\"https://www.pexels.com/photo/grayscale-photography-of-woman-1572878/\" rel=\"noopener\" target=\"_blank\"><button>Click me!</button></a>");
     });
 
     test('should apply a URL to the button element', () => {

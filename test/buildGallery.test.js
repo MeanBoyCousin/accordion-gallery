@@ -91,6 +91,7 @@ describe('Build the gallery with user options', () => {
             featuredImage: 3,
             featuredWidth: 2.8,
             linksInNewTab: true,
+            linkType: 'noopener',
             captionPosition: 'bottom',
             captionBkgColor: 'rgba(255,255,255,0.75)',
             media: {

@@ -1,6 +1,6 @@
 {
 	"name": "accordion-gallery",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "An es6 accordion image gallery javascript component.",
 	"homepage": "https://github.com/MeanBoyCousin/accordion-gallery",
 	"repository": {

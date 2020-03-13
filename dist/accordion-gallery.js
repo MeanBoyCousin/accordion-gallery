@@ -101,6 +101,7 @@ const createText = (options, i) => {
 const createButton = (options, i) => {
     const link = document.createElement('a');
     link.href = options.images[i].buttonLink;
+    link.rel = options.linkType;
     if (options.linksInNewTab === true) link.target = '_blank';
     const button = document.createElement('button');
     button.innerHTML = options.images[i].buttonText;
@@ -176,6 +177,7 @@ const buildGallery = options => {
             buttonLink: ''
         }],
         linksInNewTab: true,
+        linkType: 'noopener',
         captionPosition: 'bottom',
         captionBkgColor: 'rgba(255,255,255,0.75)',
         featuredImage: undefined,

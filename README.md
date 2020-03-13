@@ -92,6 +92,21 @@ linksInNewTab: true
 
 ---
 
+### options.linkType (Optional)
+Type: ```string```
+
+Accepts: ```'noopener' || 'noreferrer'```
+
+Specifies the link type for cross-origin destinations.
+
+Example:
+
+```js
+linkType: 'noopener'
+```
+
+---
+
 ### options.captionPosition (Optional)
 Type: ```string```
 
