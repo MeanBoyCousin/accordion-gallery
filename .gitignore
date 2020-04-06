@@ -2,3 +2,5 @@ node_modules
 notes.txt
 coverage
 reports
+# stryker temp files
+.stryker-tmp
