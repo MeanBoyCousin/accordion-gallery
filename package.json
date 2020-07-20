@@ -29,18 +29,18 @@
 	"author": "Tim Dunphy",
 	"license": "mit",
 	"devDependencies": {
-		"@babel/core": "^7.9.0",
-		"@babel/preset-env": "^7.9.0",
-		"@stryker-mutator/core": "^3.1.0",
-		"@stryker-mutator/javascript-mutator": "^3.1.0",
-		"@stryker-mutator/jest-runner": "^3.1.0",
-		"babel-jest": "^25.2.6",
+		"@babel/core": "^7.10.5",
+		"@babel/preset-env": "^7.10.4",
+		"@stryker-mutator/core": "^3.3.1",
+		"@stryker-mutator/javascript-mutator": "^3.3.1",
+		"@stryker-mutator/jest-runner": "^3.3.1",
+		"babel-jest": "^25.5.1",
 		"gulp": "^4.0.2",
 		"gulp-eslint": "^6.0.0",
 		"gulp-rename": "^2.0.0",
 		"gulp-replace": "^1.0.0",
 		"gulp-uglify-es": "^2.0.0",
-		"jest": "^25.2.7"
+		"jest": "^25.5.4"
 	},
 	"eslintConfig": {
 		"env": {
